@@ -19,5 +19,5 @@ spec:
     - CreateNamespace=true
 
     automated:
-      selfHeal: true # Sync
-      prune: true # Delete deployment when Application is being deleted
+      selfHeal: true # Override any manual change that's been done
+      prune: true    # Delete deployment when Application is being deleted
