@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/matanmiz1/argocd-apps.git
     targetRevision: HEAD
-    path: apps
+    path: apps/app1
   destination:
     server: https://kubernetes.default.svc
     namespace: myapps
