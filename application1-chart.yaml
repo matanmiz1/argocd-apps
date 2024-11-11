@@ -12,7 +12,7 @@ spec:
     targetRevision: HEAD
     helm:
       valuesObject:
-        mydata: "Synced by ArgoCD"
+        data: "Synced by ArgoCD"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: myapps
