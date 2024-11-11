@@ -11,7 +11,7 @@ spec:
     repoURL: https://github.com/matanmiz1/argocd-apps.git
     targetRevision: HEAD
     helm:
-      values:
+      valuesObject:
         data: "Synced by ArgoCD"
   destination:
     server: "https://kubernetes.default.svc"
