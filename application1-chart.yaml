@@ -14,6 +14,10 @@ spec:
     server: "https://kubernetes.default.svc"
     namespace: myapps
 
+  helm:
+    values:
+      data: "Synced by ArgoCD"
+
   syncPolicy:
     automated:
       selfHeal: true
