@@ -7,9 +7,9 @@ spec:
   project: default
 
   source:
-    path: helm/mychart
     repoURL: https://github.com/matanmiz1/argocd-apps.git
     targetRevision: HEAD
+    path: helm/mychart
     helm:
       valuesObject:
         data: "Synced by ArgoCD"

@@ -7,9 +7,9 @@ spec:
   project: default
 
   source:
-    path: helm/myapps
     repoURL: https://github.com/matanmiz1/argocd-apps.git
     targetRevision: HEAD
+    path: helm/myapps
   destination:
     server: "https://kubernetes.default.svc"
     namespace: myapps
