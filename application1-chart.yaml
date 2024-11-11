@@ -10,13 +10,12 @@ spec:
     path: helm/mychart
     repoURL: https://github.com/matanmiz1/argocd-apps.git
     targetRevision: HEAD
+    helm:
+      values:
+        data: "Synced by ArgoCD"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: myapps
-
-  helm:
-    values:
-      data: "Synced by ArgoCD"
 
   syncPolicy:
     automated:
