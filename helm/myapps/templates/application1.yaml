@@ -7,9 +7,9 @@ spec:
   project: default
 
   source:
+    path: apps/app1
     repoURL: https://github.com/matanmiz1/argocd-apps.git
     targetRevision: HEAD
-    path: apps/app1
   destination:
     server: {{ .Values.spec.destination.server }}
     namespace: myapps

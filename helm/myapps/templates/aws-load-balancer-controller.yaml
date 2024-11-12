@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: aws
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    chart: helm/mychart
+    repoURL: https://aws.github.io/eks-charts
+    targetRevision: 1.10.0
+    helm:
+      clusterName: "ie-test-eks"
+      serviceAccount:
+        name: "aws-load-balancer-controller"
+        annotations:
+          "eks.amazonaws.com.role-arn": "arn:aws:iam::883241448326:role/ie-test-eks-AmazonEKSLoadBalancerControllerRole"
+  destination:
+    server: {{ .Values.spec.destination.server }}
+    namespace: kube-system
+
+  syncPolicy:
+    automated:
+      selfHeal: true
