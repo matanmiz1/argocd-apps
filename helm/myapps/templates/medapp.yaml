@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: medapp
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    path: medapp/regionA
+    repoURL: https://github.com/matanmiz1/argocd-apps.git
+    targetRevision: HEAD
+  destination:
+    server: {{ .Values.spec.destination.server }}
+    namespace: medapp
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
