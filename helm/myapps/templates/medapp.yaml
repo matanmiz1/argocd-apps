@@ -9,7 +9,7 @@ spec:
   source:
     path: medapp/regionA
     repoURL: https://github.com/matanmiz1/argocd-apps.git
-    targetRevision: HEAD
+    targetRevision: v1
   destination:
     server: {{ .Values.spec.destination.server }}
     namespace: medapp
