@@ -1,0 +1,43 @@
+name: Dockers
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write # This is required for requesting the JWT
+  contents: read  # This is required for actions/checkout
+
+env:
+  REPO: matan-argocd
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v4
+    
+    - name: Set variables
+      id: vars
+      run: |
+        git_hash=$(git rev-parse --short=7 $GITHUB_SHA)
+        echo "tag=${git_hash}" >> $GITHUB_OUTPUT
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: ${{ secrets.ROLE_ARN }} # TODO
+        role-session-name: push-image
+        aws-region: eu-west-1
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v2
+
+    - name: Build image
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        DOCKER_BUILDKIT: 1
+      run: |
+        docker build --file medapp/Dockerfile . --tag "${ECR_REGISTRY}"/${{ env.REPO }}:"${{ steps.vars.outputs.tag }}"
+        docker push "${ECR_REGISTRY}"/"${{ env.REPO }}":"${{ steps.vars.outputs.tag }}"
