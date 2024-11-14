@@ -11,6 +11,7 @@ spec:
     repoURL: https://github.com/matanmiz1/argocd-apps.git
     targetRevision: medapp-demo
     kustomize:
+      commonAnnotationsEnvsubst: true
       commonAnnotations:
         app-source-matan: ${ARGOCD_APP_NAME}
         version: ${ARGOCD_APP_REVISION_SHORT}
