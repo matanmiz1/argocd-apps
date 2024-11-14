@@ -15,10 +15,6 @@ spec:
       commonAnnotations:
         app-source-matan: ${ARGOCD_APP_NAME}
         version: ${ARGOCD_APP_REVISION_SHORT}
-      # images:
-      #   - 883241448326.dkr.ecr.eu-west-1.amazonaws.com/matan-argocd:${ARGOCD_APP_REVISION_SHORT}
-        # - name: 883241448326.dkr.ecr.eu-west-1.amazonaws.com/matan-argocd
-        #   newTag: ${ARGOCD_APP_REVISION_SHORT}
       patches:
         - target:
             kind: Deployment
