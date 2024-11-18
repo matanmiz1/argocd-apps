@@ -16,7 +16,7 @@ spec:
         serviceAccount:
           name: "aws-load-balancer-controller"
           annotations:
-            "eks.amazonaws.com.role-arn": "arn:aws:iam::883241448326:role/ie-test-eks-AmazonEKSLoadBalancerControllerRole"
+            "eks.amazonaws.com.role-arn": "arn:aws:iam::883241448326:role/AmazonEKSLoadBalancerControllerRole-ie-test-eks"
   destination:
     server: {{ .Values.spec.destination.server }}
     namespace: kube-system
